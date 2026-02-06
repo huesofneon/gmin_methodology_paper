@@ -1,3 +1,6 @@
+====================================
+INSTRUCTIONS FOR RUNNING CODE
+====================================
 Legend: 
 # = run number (3=JK, 4=DK)
 $ = Sitename/Datasetname
