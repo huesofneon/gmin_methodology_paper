@@ -248,6 +248,11 @@ plot_data2 <- plot_data %>%
                       labels = c("Protea repens","Erica monsoniana",
                                  "Dicerothamnus rhinocerotis","Cannomois congesta")
     )+
+    scale_x_discrete(labels = c("PROREP" = "Protea\nrepens",
+                                "ERIMON" = "Erica\nmonsoniana",
+                                "ELYRHI" = "Dicerothamnus\nrhinocerotis",
+                                "CANCON" = "Cannomois\ncongesta")
+                     )+
     geom_text(aes(x = SPP, y = SMRIΨ88 + SMRIΨ88.se + 0.025, label = Letters), vjust = 0)+
     theme_bw() +
     theme(
@@ -258,10 +263,9 @@ plot_data2 <- plot_data %>%
       legend.text = element_text(face = "italic"),
       # Customize facet heading background
       strip.background = element_rect(fill = NA, color = NA),
-      legend.position = "bottom",
-      axis.text.y = element_blank(),
+      legend.position = "none",
+      axis.text.y = element_text(face = "italic"),
       axis.ticks.y = element_blank(),
-      axis.title.y = element_blank(),
       plot.title = element_blank()
     )
   
