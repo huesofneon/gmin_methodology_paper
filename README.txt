@@ -5,13 +5,17 @@ Legend:
 # = run number (3=JK, 4=DK)
 $ = Sitename/Datasetname
 
+Note: code has already been run to produce outputs/figures available on the repository.
+
 =========R data files=========
+Setup (done already):
 1: "#_LoggerName.txt" is downloaded from logger to '\data\raw\'
 	-Edit txt to be read by R such that the first line follows this format:
 	LoggerName,Time,Celsius(C),Humidity(%rh),Dew Point(C),Serial Number
 
 2: "v#_Min Conductance Datasheet_$.xlsx" is downloaded from google sheets to '\data\raw\'.
 
+Running code:
 3: "\massloss_run#.R" outputs '\data\mass_data_run4.rds' by pulling data from '\data\raw\' and combining:
 	-drydown data (v?_Min_Conductance_Datasheet_$.xlsx), 
 	-LA correction data (#_LA_Corrections_$), 
