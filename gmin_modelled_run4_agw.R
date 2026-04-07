@@ -1,5 +1,8 @@
 #script for calculating gmin over RWC80-50 interval for run4
 
+### modified Adam West 19 March 
+
+
 {
 # Initialization ---------------------------------------------------------------
 rm(list = ls()) # Clear environment
@@ -30,13 +33,6 @@ metdata_summ <- readRDS(paste0(data_dir,"4_metdata_summary.rds"))%>%
 
 
 
-
-
-
-
-
-
-
 #define atmospheric pressure at height above sea level 
 atmosp <- 99891.70/1000 #kPa (@120m = approx height of HW Pearson)
 
@@ -46,7 +42,7 @@ se <- function(x) {
 }
 
 modelcoeffs_gmin <- readRDS(paste0(data_dir,"modelcoeffs_gmin_run4.rds"))
-df_comb <- readRDS(paste0(data_dir,"df_comb_run4.rds"))
+df_comb <- readRDS(paste0(data_dir,"df_comb_run4_agw.rds"))
 
 treat_names_gmin <- sort(unique(df_comb$ID_Code))
 spp_list <- unique(df_comb$GENSPP)
@@ -142,7 +138,7 @@ samples <- unique(df_comb$Sample_no)
     mutate(`slope.s-1.metdata`=((slope/60)*(atmosp/MeanVPD)))%>%
     #gmin without correcting LA
     mutate(gmin_CalcdPLA=(((slope/60)/(18.015))*1000)/(Calcd.Proj_Area/10000)*(atmosp/MeanVPD))%>%
-    #gmin with LA correction for 3D structure
+    #gmin with LA correction for surface structure
     mutate(gmin_CorrPLA=(((slope/60)/(18.015))*1000)/(Corr.Proj_Area/10000)*(atmosp/MeanVPD))
 
 #Add Site
@@ -175,7 +171,7 @@ for (i in seq_along(RWC80_50_bin_values$Site)) {
     CorrPLA_RWC80_50_gmin.se = se(gmin_CorrPLA)
   )
   
-saveRDS(RWC80_50_summ, paste0(data_dir,"gmin_modelled_summ_run4.rds")) 
+saveRDS(RWC80_50_summ, paste0(data_dir,"gmin_modelled_summ_run4_agw.rds")) 
 
 #full
-saveRDS(RWC80_50_bin_values, paste0(data_dir,"gmin_modelled_full_run4.rds"))
+saveRDS(RWC80_50_bin_values, paste0(data_dir,"gmin_modelled_full_run4_agw.rds"))
